@@ -16,10 +16,10 @@ return array(
 	'user' => 'root',
 
 	// The database password to connect with.
-	'password' => 'heybitch',
+	'password' => 'ONLSAzxv',
 
 	// The name of the database to select.
-	'database' => 'wwcodedc_site',
+	'database' => 'womenwhocode',
 
 	// The prefix to use when naming tables. This can be no more than 5 characters.
 	'tablePrefix' => 'craft',
