@@ -80,24 +80,7 @@ class TemplatesService extends BaseApplicationComponent
 			$twig->getExtension('core')->setTimezone($timezone);
 
 			// Give plugins a chance to add their own Twig extensions
-
-			// All plugins may not have been loaded yet if an exception is being thrown
-			// or a plugin is loading a template as part of of its init() function.
-			if (craft()->plugins->arePluginsLoaded())
-			{
-				$pluginExtensions = craft()->plugins->call('addTwigExtension');
-
-				foreach ($pluginExtensions as $extension)
-				{
-					$twig->addExtension($extension);
-				}
-			}
-			else
-			{
-				// Wait around for plugins to actually be loaded,
-				// then do it for all Twig environments that have been created.
-				craft()->on('plugins.loadPlugins', array($this, '_onPluginsLoaded'));
-			}
+			$this->_addPluginTwigExtensions($twig);
 
 			$this->_twigs[$loaderClass] = $twig;
 		}
@@ -153,10 +136,10 @@ class TemplatesService extends BaseApplicationComponent
 	{
 		$twig = $this->getTwig();
 
-		$lastRenedringTemplate = $this->_renderingTemplate;
+		$lastRenderingTemplate = $this->_renderingTemplate;
 		$this->_renderingTemplate = $template;
 		$result = $twig->render($template, $variables);
-		$this->_renderingTemplate = $lastRenedringTemplate;
+		$this->_renderingTemplate = $lastRenderingTemplate;
 		return $result;
 	}
 
@@ -173,10 +156,10 @@ class TemplatesService extends BaseApplicationComponent
 		$twig = $this->getTwig();
 		$twigTemplate = $twig->loadTemplate($template);
 
-		$lastRenedringTemplate = $this->_renderingTemplate;
+		$lastRenderingTemplate = $this->_renderingTemplate;
 		$this->_renderingTemplate = $template;
 		$result = call_user_func_array(array($twigTemplate, 'get'.$macro), $args);
-		$this->_renderingTemplate = $lastRenedringTemplate;
+		$this->_renderingTemplate = $lastRenderingTemplate;
 		return $result;
 	}
 
@@ -191,10 +174,10 @@ class TemplatesService extends BaseApplicationComponent
 	{
 		$stringTemplate = new StringTemplate(md5($template), $template);
 
-		$lastRenedringTemplate = $this->_renderingTemplate;
+		$lastRenderingTemplate = $this->_renderingTemplate;
 		$this->_renderingTemplate = 'string:'.$template;
 		$result = $this->render($stringTemplate, $variables);
-		$this->_renderingTemplate = $lastRenedringTemplate;
+		$this->_renderingTemplate = $lastRenderingTemplate;
 		return $result;
 	}
 
@@ -233,12 +216,12 @@ class TemplatesService extends BaseApplicationComponent
 		}
 
 		// Render it!
-		$lastRenedringTemplate = $this->_renderingTemplate;
+		$lastRenderingTemplate = $this->_renderingTemplate;
 		$this->_renderingTemplate = 'string:'.$template;
 		$result = $this->_objectTemplates[$template]->render(array(
 			'object' => $object
 		));
-		$this->_renderingTemplate = $lastRenedringTemplate;
+		$this->_renderingTemplate = $lastRenderingTemplate;
 
 		// Re-enable strict variables
 		if ($strictVariables)
@@ -925,6 +908,39 @@ class TemplatesService extends BaseApplicationComponent
 	}
 
 	/**
+	 * Adds any plugin-supplied Twig extensions to a given Twig instance.
+	 *
+	 * @access private
+	 * @param \Twig_Environment $twig
+	 */
+	private function _addPluginTwigExtensions(\Twig_Environment $twig)
+	{
+		if (craft()->plugins->arePluginsLoaded())
+		{
+			$pluginExtensions = craft()->plugins->call('addTwigExtension');
+
+			try
+			{
+				foreach ($pluginExtensions as $extension)
+				{
+					$twig->addExtension($extension);
+				}
+			}
+			catch (\LogicException $e)
+			{
+				Craft::log('Tried to register plugin-supplied Twig extensions, but Twig environment has already initialized its extensions.', LogLevel::Warning);
+				return;
+			}
+		}
+		else
+		{
+			// Wait around for plugins to actually be loaded,
+			// then do it for all Twig environments that have been created.
+			craft()->on('plugins.loadPlugins', array($this, '_onPluginsLoaded'));
+		}
+	}
+
+	/**
 	 * Loads plugin-supplied Twig extensions now that all plugins have been loaded.
 	 *
 	 * @access private
@@ -932,14 +948,9 @@ class TemplatesService extends BaseApplicationComponent
 	 */
 	public function _onPluginsLoaded(Event $event)
 	{
-		$pluginExtensions = craft()->plugins->call('addTwigExtension');
-
 		foreach ($this->_twigs as $twig)
 		{
-			foreach ($pluginExtensions as $extension)
-			{
-				$twig->addExtension($extension);
-			}
+			$this->_addPluginTwigExtensions($twig);
 		}
 	}
 
@@ -1047,7 +1058,9 @@ class TemplatesService extends BaseApplicationComponent
 			$html .= ' hasicon';
 		}
 
-		$html .= '" data-id="'.$context['element']->id.'" data-locale="'.$context['element']->locale.'" data-status="'.$context['element']->getStatus().'" data-label="'.$context['element'].'" data-url="'.$context['element']->getUrl().'"';
+		$label = HtmlHelper::encode($context['element']);
+
+		$html .= '" data-id="'.$context['element']->id.'" data-locale="'.$context['element']->locale.'" data-status="'.$context['element']->getStatus().'" data-label="'.$label.'" data-url="'.$context['element']->getUrl().'"';
 
 		$isEditable = ElementHelper::isElementEditable($context['element']);
 
@@ -1093,11 +1106,11 @@ class TemplatesService extends BaseApplicationComponent
 
 		if ($context['context'] == 'index' && ($cpEditUrl = $context['element']->getCpEditUrl()))
 		{
-			$html .= '<a href="'.$cpEditUrl.'">'.HtmlHelper::encode($context['element']).'</a>';
+			$html .= '<a href="'.$cpEditUrl.'">'.$label.'</a>';
 		}
 		else
 		{
-			$html .= $context['element'];
+			$html .= $label;
 		}
 
 		$html .= '</span></div></div>';

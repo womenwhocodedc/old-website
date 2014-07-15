@@ -2956,10 +2956,18 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 			{
 				if (this._folderDrag)
 				{
-					this._folderDrag.addItems($source.parent());
+					if (this._getSourceLevel($source) > 1)
+					{
+						this._folderDrag.addItems($source.parent());
+					}
 				}
 			}
 		};
+	},
+
+	_getSourceLevel: function($source)
+	{
+		return $source.parentsUntil('nav', 'ul').length;
 	},
 
 	/**
@@ -3029,7 +3037,7 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 				{
 					var $source = $($selected[i]).parent();
 
-					if ($source.hasClass('sel') && $source.closest('ul').data('level') > 1)
+					if ($source.hasClass('sel') && this._getSourceLevel($source) > 1)
 					{
 						draggees.push($source[0]);
 					}
@@ -3038,32 +3046,45 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 				return $(draggees);
 			}, this),
 
-			helper: $.proxy(function($folder)
+			helper: $.proxy(function($draggeeHelper)
 			{
-				var $helper = $('<ul class="assets-fm-folderdrag" />').append($folder);
+				var $helperSidebar = $('<div class="sidebar" style="padding-top: 0; padding-bottom: 0;"/>'),
+					$helperNav = $('<nav/>').appendTo($helperSidebar),
+					$helperUl = $('<ul/>').appendTo($helperNav);
 
-				// collapse this folder
-				$folder.removeClass('expanded');
+				$draggeeHelper.appendTo($helperUl).removeClass('expanded');
+				$draggeeHelper.children('a').addClass('sel');
 
-				// set the helper width to the folders container width
-				$helper.width(this.$sidebar[0].scrollWidth);
+				// Match the style
+				$draggeeHelper.css({
+					'padding-top':    this._folderDrag.$draggee.css('padding-top'),
+					'padding-right':  this._folderDrag.$draggee.css('padding-right'),
+					'padding-bottom': this._folderDrag.$draggee.css('padding-bottom'),
+					'padding-left':   this._folderDrag.$draggee.css('padding-left')
+				});
 
-				return $helper;
+				return $helperSidebar;
 			}, this),
 
 			dropTargets: $.proxy(function()
 			{
 				var targets = [];
 
+				// Tag the dragged folder and it's subfolders
+				var draggedSourceIds = [];
+				this._folderDrag.$draggee.find('a[data-key]').each(function ()
+				{
+					draggedSourceIds.push($(this).data('key'));
+				});
+
 				for (var i = 0; i < this.$sources.length; i++)
 				{
 					var $source = $(this.$sources[i]);
-
-					if (!$source.is(this._folderDrag.$draggee))
+					if (!Craft.inArray($source.data('key'), draggedSourceIds))
 					{
 						targets.push($source);
 					}
-				};
+				}
 
 				return targets;
 			}, this),
@@ -3071,9 +3092,6 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 			onDragStart: $.proxy(function()
 			{
 				this._tempExpandedFolders = [];
-
-				// hide the expanded draggees' subfolders
-				this._folderDrag.$draggee.filter('.expanded').removeClass('expanded').addClass('expanded-tmp')
 			}, this),
 
 			onDropTargetChange: $.proxy(this, '_onDropTargetChange'),
@@ -3225,9 +3243,6 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 
 	_onFolderDragStop: function()
 	{
-		// show the expanded draggees' subfolders
-		this._folderDrag.$draggee.filter('.expanded-tmp').removeClass('expanded-tmp').addClass('expanded');
-
 		// Only move if we have a valid target and we're not trying to move into our direct parent
 		if (
 			this._folderDrag.$activeDropTarget &&
@@ -3539,7 +3554,7 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 	 */
 	_getParentSource: function($source)
 	{
-		if ($source.closest('ul').data('level') > 1)
+		if (this._getSourceLevel($source) > 1)
 		{
 			return $source.parent().parent().siblings('a');
 		}
@@ -3905,7 +3920,7 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 
 	_createElementContextMenus: function($elements)
 	{
-		var settings = {menuClass: 'menu assets-contextmenu'};
+		var settings = {menuClass: 'menu'};
 
 		var menuOptions = [{ label: Craft.t('View file'), onClick: $.proxy(this, '_viewFile') }];
 		menuOptions.push({ label: Craft.t('Edit properties'), onClick: $.proxy(this, '_showProperties') });
@@ -4225,13 +4240,13 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 		var menuOptions = [{ label: Craft.t('New subfolder'), onClick: $.proxy(this, '_createSubfolder', $source) }];
 
 		// For all folders that are not top folders
-		if (this.settings.context == 'index' && $source.closest('ul').data('level') > 1)
+		if (this.settings.context == 'index' && this._getSourceLevel($source) > 1)
 		{
 			menuOptions.push({ label: Craft.t('Rename folder'), onClick: $.proxy(this, '_renameFolder', $source) });
 			menuOptions.push({ label: Craft.t('Delete folder'), onClick: $.proxy(this, '_deleteFolder', $source) });
 		}
 
-		new Garnish.ContextMenu($source, menuOptions, {menuClass: 'menu assets-contextmenu'});
+		new Garnish.ContextMenu($source, menuOptions, {menuClass: 'menu'});
 	},
 
 	_createSubfolder: function($parentFolder)
@@ -4255,7 +4270,12 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 				{
 					this._prepareParentForChildren($parentFolder);
 
-					var $subFolder = $('<li><a data-key="folder:' + data.folderId + '" data-has-thumbs="' + $parentFolder.data('has-thumbs') + '">' + data.folderName + '</a></li>');
+					var $subFolder = $('<li><a ' +
+							'data-key="folder:' + data.folderId + '" ' +
+							'data-has-thumbs="' + $parentFolder.data('has-thumbs') + '" ' +
+							'data-upload="' + $parentFolder.data('upload') + '">' +
+								data.folderName +
+						'</a></li>');
 
 					var $a = $subFolder.find('a');
 					this._addSubfolder($parentFolder, $subFolder);
@@ -4460,10 +4480,13 @@ Craft.AssetSelectInput = Craft.BaseElementSelectInput.extend(
 	{
 		this.base(id, name, elementType, sources, criteria, sourceElementId, limit, storageKey);
 		this.fieldId = fieldId;
-		this._attachDragEvents();
+		this._attachUploader();
 	},
 
-	_attachDragEvents: function()
+	/**
+	 * Attach the uploader with drag event handler
+	 */
+	_attachUploader: function()
 	{
 		this.progressBar = new Craft.ProgressBar($('<div class="progress-shade"></div>').appendTo(this.$container));
 
@@ -4481,6 +4504,8 @@ Craft.AssetSelectInput = Craft.BaseElementSelectInput.extend(
 			options.allowedKinds = this.criteria.kind;
 		}
 
+		options.canAddMoreFiles = $.proxy(this, 'canAddMoreFiles');
+
 		options.events = {};
 		options.events.fileuploadstart = $.proxy(this, '_onUploadStart');
 		options.events.fileuploadprogressall = $.proxy(this, '_onUploadProgress');
@@ -4491,18 +4516,13 @@ Craft.AssetSelectInput = Craft.BaseElementSelectInput.extend(
 
 	/**
 	 * Add the freshly uploaded file to the input field.
-	 *
-	 * @param element
 	 */
 	selectUploadedFile: function(element)
 	{
 		// Check if we're able to add new elements
-		if (this.limit)
+		if (!this.canAddMoreElements())
 		{
-			if (this.totalElements + 1 == this.limit)
-			{
-				return;
-			}
+			return;
 		}
 
 		var $newElement = element.$element;
@@ -4541,9 +4561,6 @@ Craft.AssetSelectInput = Craft.BaseElementSelectInput.extend(
 
 	/**
 	 * On upload start.
-	 *
-	 * @param event
-	 * @private
 	 */
 	_onUploadStart: function(event)
 	{
@@ -4558,10 +4575,6 @@ Craft.AssetSelectInput = Craft.BaseElementSelectInput.extend(
 
 	/**
 	 * On upload progress.
-	 *
-	 * @param event
-	 * @param data
-	 * @private
 	 */
 	_onUploadProgress: function(event, data)
 	{
@@ -4571,10 +4584,6 @@ Craft.AssetSelectInput = Craft.BaseElementSelectInput.extend(
 
 	/**
 	 * On a file being uploaded.
-	 *
-	 * @param event
-	 * @param data
-	 * @private
 	 */
 	_onUploadComplete: function(event, data)
 	{
@@ -4591,7 +4600,16 @@ Craft.AssetSelectInput = Craft.BaseElementSelectInput.extend(
 		}
 
 		this.forceModalRefresh();
+	},
+
+	/**
+	 * We have to take into account files about to be added as well
+	 */
+	canAddMoreFiles: function (slotsTaken)
+	{
+		return (!this.limit || this.$elements.length  + slotsTaken < this.limit);
 	}
+
 });
 
 
@@ -4673,11 +4691,16 @@ Craft.AssetSelectorModal = Craft.BaseElementSelectorModal.extend(
 			$('<li><a data-transform="'+Craft.AssetSelectorModal.transforms[i].handle+'">'+Craft.AssetSelectorModal.transforms[i].name+'</a></li>').appendTo($menuList);
 		}
 
-		new Garnish.MenuBtn(this.$selectTransformBtn, {
+		var MenuButton = new Garnish.MenuBtn(this.$selectTransformBtn, {
 			onOptionSelect: $.proxy(this, 'onSelectTransform')
 		});
+		MenuButton.disable();
+
+		this.$selectTransformBtn.data('menuButton', MenuButton);
 
 		this.$transformSpinner = $('<div class="spinner hidden" style="margin-'+Craft.right+': -24px;"/>').insertAfter($btnGroup);
+
+
 	},
 
 	onSelectionChange: function(ev)
@@ -4701,12 +4724,29 @@ Craft.AssetSelectorModal = Craft.BaseElementSelectorModal.extend(
 			var allowTransforms = false;
 		}
 
+		if (this.$selectTransformBtn)
+		{
+			var MenuBtn = this.$selectTransformBtn.data('menuButton');
+		}
+		else
+		{
+			var MenuBtn = null;
+		}
+
 		if (allowTransforms)
 		{
+			if (MenuBtn)
+			{
+				MenuBtn.enable();
+			}
 			this.$selectTransformBtn.removeClass('disabled');
 		}
 		else if (this.$selectTransformBtn)
 		{
+			if (MenuBtn)
+			{
+				MenuBtn.disable();
+			}
 			this.$selectTransformBtn.addClass('disabled');
 		}
 
@@ -5778,7 +5818,7 @@ Craft.FieldLayoutDesigner = Garnish.Base.extend(
 
 		this.$tabContainer = this.$container.children('.fld-tabs');
 		this.$unusedFieldContainer = this.$container.children('.unusedfields');
-		this.$newTabBtn = $('#newtabbtn');
+		this.$newTabBtn = this.$container.find('> .newtabbtn-container > .btn');
 		this.$allFields = this.$unusedFieldContainer.find('.fld-field');
 
 		// Set up the layout grids
@@ -5964,7 +6004,7 @@ Craft.FieldLayoutDesigner = Garnish.Base.extend(
 		$field.remove();
 
 		this.removeFieldById(fieldId);
-		this.tabGrid.refreshCols();
+		this.tabGrid.refreshCols(true);
 	},
 
 	removeFieldById: function(fieldId)
@@ -5986,7 +6026,7 @@ Craft.FieldLayoutDesigner = Garnish.Base.extend(
 		}
 		else
 		{
-			this.unusedFieldGrid.refreshCols();
+			this.unusedFieldGrid.refreshCols(true);
 		}
 	},
 
@@ -6157,7 +6197,7 @@ Craft.FieldLayoutDesigner.BaseDrag = Garnish.Drag.extend(
 				}
 				else
 				{
-					this.designer.tabGrid.refreshCols();
+					this.designer.tabGrid.refreshCols(true);
 				}
 
 				this.setMidpoints();
@@ -6191,7 +6231,7 @@ Craft.FieldLayoutDesigner.BaseDrag = Garnish.Drag.extend(
 				}
 				else
 				{
-					this.designer.tabGrid.refreshCols();
+					this.designer.tabGrid.refreshCols(true);
 				}
 
 				this.setMidpoints();
@@ -6264,8 +6304,8 @@ Craft.FieldLayoutDesigner.BaseDrag = Garnish.Drag.extend(
 			visibility: 'hidden'
 		});
 
-		this.designer.tabGrid.refreshCols();
-		this.designer.unusedFieldGrid.refreshCols();
+		this.designer.tabGrid.refreshCols(true);
+		this.designer.unusedFieldGrid.refreshCols(true);
 
 		// return the helpers to the draggees
 		this.returnHelpersToDraggees();
@@ -6616,6 +6656,9 @@ Craft.FieldToggle = Garnish.Base.extend(
 					$target.height('auto');
 				});
 			}
+
+			// Trigger a resize event in case there are any grids in the target that need to initialize
+			Garnish.$win.trigger('resize');
 		}
 	},
 
@@ -6682,7 +6725,7 @@ Craft.Grid = Garnish.Base.extend(
 
 		this.$items = this.$container.children(this.settings.itemSelector);
 		this.setItems();
-		this.refreshCols();
+		this.refreshCols(true);
 
 		// Adjust them when the container is resized
 		this.addListener(this.$container, 'resize', 'refreshCols');
@@ -6695,14 +6738,14 @@ Craft.Grid = Garnish.Base.extend(
 	{
 		this.$items = $().add(this.$items.add(items));
 		this.setItems();
-		this.refreshCols();
+		this.refreshCols(true);
 	},
 
 	removeItems: function(items)
 	{
 		this.$items = $().add(this.$items.not(items));
 		this.setItems();
-		this.refreshCols();
+		this.refreshCols(true);
 	},
 
 	setItems: function()
@@ -6715,9 +6758,20 @@ Craft.Grid = Garnish.Base.extend(
 		}
 	},
 
-	refreshCols: function()
+	refreshCols: function(force)
 	{
 		if (!this.items.length)
+		{
+			return;
+		}
+
+		// Check to see if the grid is actually visible
+		this.refreshCols._oldHeight = this.$container[0].style.height;
+		this.$container[0].style.height = 1;
+		this.refreshCols._scrollHeight = this.$container[0].scrollHeight;
+		this.$container[0].style.height = this.refreshCols._oldHeight;
+
+		if (this.refreshCols._scrollHeight == 0)
 		{
 			return;
 		}
@@ -6737,7 +6791,7 @@ Craft.Grid = Garnish.Base.extend(
 		}
 
 		// Same number of columns as before?
-		if (this.totalCols === this.refreshCols._totalCols)
+		if (!force && this.totalCols === this.refreshCols._totalCols)
 		{
 			return;
 		}
@@ -9852,23 +9906,25 @@ Craft.Uploader = Garnish.Base.extend(
 	_rejectedFiles: {},
 	$element: null,
 	_extensionList: null,
-	_fileCounter: 0,
+	_totalFileCounter: 0,
+	_validFileCounter: 0,
 	settings: null,
 
     init: function($element, settings)
     {
-		this._rejectedFiles = {"size": [], "type": []};
+		this._rejectedFiles = {"size": [], "type": [], "limit": []};
 		this.$element = $element;
 		this.allowedKinds = null;
 		this._extensionList = null;
-		this._fileCounter = 0;
+		this._totalFileCounter = 0;
+		this._validFileCounter = 0;
 
         settings = $.extend({}, this.defaultSettings, settings);
 
 		var events = settings.events;
 		delete settings.events;
 
-		if ( settings.allowedKinds && settings.allowedKinds.length)
+		if (settings.allowedKinds && settings.allowedKinds.length)
 		{
 			if (typeof settings.allowedKinds == "string")
 			{
@@ -9901,8 +9957,7 @@ Craft.Uploader = Garnish.Base.extend(
 	},
 
     /**
-     * Set uploader parameters
-     * @param paramObject
+     * Set uploader parameters.
      */
     setParams: function(paramObject)
     {
@@ -9910,8 +9965,7 @@ Craft.Uploader = Garnish.Base.extend(
     },
 
     /**
-     * Get the number of uploads in progress
-     * @returns {*}
+     * Get the number of uploads in progress.
      */
     getInProgress: function()
     {
@@ -9919,8 +9973,7 @@ Craft.Uploader = Garnish.Base.extend(
     },
 
 	/**
-	 * Return true, if this is the last upload
-	 * @returns {boolean}
+	 * Return true, if this is the last upload.
 	 */
 	isLastUpload: function()
 	{
@@ -9928,7 +9981,7 @@ Craft.Uploader = Garnish.Base.extend(
 	},
 
 	/**
-	 * Called on file add
+	 * Called on file add.
 	 */
 	onFileAdd: function(e, data)
 	{
@@ -9969,25 +10022,34 @@ Craft.Uploader = Garnish.Base.extend(
 				if ($.inArray(fileExtension.toLowerCase(), this._extensionList) == -1)
 				{
 					pass = false;
-					this._rejectedFiles.type.push('"' + file.name + '"');
+					this._rejectedFiles.type.push('“' + file.name + '”');
 				}
 			}
 
 			if (file.size > this.settings.maxFileSize)
 			{
-				this._rejectedFiles.size.push('"' + file.name + '"')
+				this._rejectedFiles.size.push('“' + file.name + '”');
 				pass = false;
 			}
 
-			if (++this._fileCounter == data.originalFiles.length)
+			// If the validation has passed for this file up to now, check if we're not hitting any limits
+			if (pass && typeof this.settings.canAddMoreFiles == "function" && !this.settings.canAddMoreFiles(this._validFileCounter))
 			{
-				this._fileCounter = 0;
-				this.processErrorMessages();
+				this._rejectedFiles.limit.push('“' + file.name + '”');
+				pass = false;
 			}
 
 			if (pass)
 			{
+				this._validFileCounter++;
 				data.submit();
+			}
+
+			if (++this._totalFileCounter == data.originalFiles.length)
+			{
+				this._totalFileCounter = 0;
+				this._validFileCounter = 0;
+				this.processErrorMessages();
 			}
 
 		}, this));
@@ -9995,6 +10057,9 @@ Craft.Uploader = Garnish.Base.extend(
 		return true;
 	},
 
+	/**
+	 * Process error messages.
+	 */
 	processErrorMessages: function()
 	{
 		if (this._rejectedFiles.type.length)
@@ -10017,7 +10082,7 @@ Craft.Uploader = Garnish.Base.extend(
 		{
 			if (this._rejectedFiles.size.length == 1)
 			{
-				var str = "The file {files} could not be uploaded, because it exceededs the maximum upload size of {size}.";
+				var str = "The file {files} could not be uploaded, because it exceeds the maximum upload size of {size}.";
 			}
 			else
 			{
@@ -10026,6 +10091,22 @@ Craft.Uploader = Garnish.Base.extend(
 
 			str = Craft.t(str, {files: this._rejectedFiles.size.join(", "), size: Craft.maxUploadSize});
 			this._rejectedFiles.size = [];
+			alert(str);
+		}
+
+		if (this._rejectedFiles.limit.length)
+		{
+			if (this._rejectedFiles.limit.length == 1)
+			{
+				var str = "The file {files} could not be uploaded, because the field limit has been reached.";
+			}
+			else
+			{
+				var str = "The files {files} could not be uploaded, because the field limit has been reached.";
+			}
+
+			str = Craft.t(str, {files: this._rejectedFiles.limit.join(", "), size: Craft.maxUploadSize});
+			this._rejectedFiles.limit = [];
 			alert(str);
 		}
 	},
@@ -10037,7 +10118,8 @@ Craft.Uploader = Garnish.Base.extend(
 		sequentialUploads: true,
 		maxFileSize: Craft.maxUploadSize,
 		alloweKinds: null,
-		events: {}
+		events: {},
+		canAddMoreFiles: null
 	}
 });
 

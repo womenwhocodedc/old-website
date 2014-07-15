@@ -21,9 +21,11 @@ class LocalizationService extends BaseApplicationComponent
 	private $_localeData;
 
 	/**
-	 * Returns of all known locales.
+	 * Returns an array of all known locales.
 	 *
-	 * @return array
+	 * The list of known locales is based on whatever files exist in craft/app/framework/i18n/data/.
+	 *
+	 * @return array An array of LocaleModel objects.
 	 */
 	public function getAllLocales()
 	{
@@ -39,9 +41,11 @@ class LocalizationService extends BaseApplicationComponent
 	}
 
 	/**
-	 * Returns a list of language ids from the languages directory that Craft is translated into.
+	 * Returns an array of locales that Craft is translated into.
 	 *
-	 * @return mixed
+	 * The list of locales is based on whatever files exist in craft/app/translations/.
+	 *
+	 * @return array An array of LocaleModel objects.
 	 */
 	public function getAppLocales()
 	{
@@ -71,7 +75,9 @@ class LocalizationService extends BaseApplicationComponent
 	/**
 	 * Returns an array of the locale IDs which Craft has been translated into.
 	 *
-	 * @return array
+	 * The list of locales is based on whetever files exist in craft/app/translations/.
+	 *
+	 * @return array An array of locale IDs.
 	 */
 	public function getAppLocaleIds()
 	{
@@ -87,9 +93,11 @@ class LocalizationService extends BaseApplicationComponent
 	}
 
 	/**
-	 * Returns the locales that the site is translated for.
+	 * Returns an array of the site locales.
 	 *
-	 * @return array
+	 * The list of locales is based on whatever was defined in Settings > Locales in the CP.
+	 *
+	 * @return array An array of LocaleModel objects.
 	 */
 	public function getSiteLocales()
 	{
@@ -124,7 +132,9 @@ class LocalizationService extends BaseApplicationComponent
 	/**
 	 * Returns the site's primary locale.
 	 *
-	 * @return LocaleModel
+	 * The primary locale is whatever is listed first in Settings > Locales in the CP.
+	 *
+	 * @return LocaleModel A LocaleModel object representing the primary locale.
 	 */
 	public function getPrimarySiteLocale()
 	{
@@ -135,7 +145,9 @@ class LocalizationService extends BaseApplicationComponent
 	/**
 	 * Returns the site's primary locale ID.
 	 *
-	 * @return string
+	 * The primary locale is whatever is listed first in Settings > Locales in the CP.
+	 *
+	 * @return string The primary locale ID.
 	 */
 	public function getPrimarySiteLocaleId()
 	{
@@ -145,7 +157,9 @@ class LocalizationService extends BaseApplicationComponent
 	/**
 	 * Returns an array of the site locale IDs.
 	 *
-	 * @return array
+	 * The list of locales is based on whatever was defined in Settings > Locales in the CP.
+	 *
+	 * @return array An array of locale IDs.
 	 */
 	public function getSiteLocaleIds()
 	{

@@ -286,79 +286,79 @@ body.rtl .content.has-sidebar .show-sidebar:before { content: 'menu larr'; }
 body.ltr .content.has-sidebar .show-sidebar.showing:before { content: 'menu larr'; }
 body.rtl .content.has-sidebar .show-sidebar.showing:before { content: 'menu rarr'; }
 
-.content.has-sidebar .sidebar { position: absolute; top: -24px; padding: 24px; width: 170px; overflow: auto; }
-body.ltr .content.has-sidebar .sidebar { left: -218px; }
-body.rtl .content.has-sidebar .sidebar { right: -218px; }
+.sidebar { position: absolute; top: -24px; padding: 24px; width: 170px; overflow: auto; }
+body.ltr .sidebar { left: -218px; }
+body.rtl .sidebar { right: -218px; }
 
-.content.has-sidebar .sidebar .heading { position: relative; padding: 0 24px; }
-body.ltr .content.has-sidebar .sidebar .heading { margin: 14px 0 2px -24px; }
-body.rtl .content.has-sidebar .sidebar .heading { margin: 14px -24px 2px 0; }
+.sidebar .heading { position: relative; padding: 0 24px; }
+body.ltr .sidebar .heading { margin: 14px 0 2px -24px; }
+body.rtl .sidebar .heading { margin: 14px -24px 2px 0; }
 
-.content.has-sidebar .sidebar .heading:after { display: block; position: absolute; bottom: 7px; content: '.'; text-indent: -200px; overflow: hidden; width: 100%; height: 1px; border-top: 1px solid rgba(115, 127, 140, 0.15); }
-body.ltr .content.has-sidebar .sidebar .heading:after { left: 0; }
-body.rtl .content.has-sidebar .sidebar .heading:after { right: 0; }
+.sidebar .heading:after { display: block; position: absolute; bottom: 7px; content: '.'; text-indent: -200px; overflow: hidden; width: 100%; height: 1px; border-top: 1px solid rgba(115, 127, 140, 0.15); }
+body.ltr .sidebar .heading:after { left: 0; }
+body.rtl .sidebar .heading:after { right: 0; }
 
-.content.has-sidebar .sidebar .heading span { display: inline-block; position: relative; z-index: 1; padding: 0 5px; margin: 0 -5px; text-transform: uppercase; color: #b9bfc6; font-size: 11px; font-weight: bold; background: #fff; }
+.sidebar .heading span { display: inline-block; position: relative; z-index: 1; padding: 0 5px; margin: 0 -5px; text-transform: uppercase; color: #b9bfc6; font-size: 11px; font-weight: bold; background: #fff; }
 
-.content.has-sidebar .sidebar nav { width: 170px; overflow: auto; }
-body.ltr .content.has-sidebar .sidebar nav { margin-left: -24px; }
-body.rtl .content.has-sidebar .sidebar nav { margin-right: -24px; }
-body.ltr .content.has-sidebar .sidebar nav { padding-left: 24px; }
-body.rtl .content.has-sidebar .sidebar nav { padding-right: 24px; }
+.sidebar nav { width: 170px; overflow: auto; }
+body.ltr .sidebar nav { margin-left: -24px; }
+body.rtl .sidebar nav { margin-right: -24px; }
+body.ltr .sidebar nav { padding-left: 24px; }
+body.rtl .sidebar nav { padding-right: 24px; }
 
-.content.has-sidebar .sidebar nav li { position: relative; }
+.sidebar nav li { position: relative; }
 
-.content.has-sidebar .sidebar nav li a { display: block; padding: 4px 0; color: #29323d; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; outline: none; }
-body.ltr .content.has-sidebar .sidebar nav li a { margin-left: -24px; }
-body.rtl .content.has-sidebar .sidebar nav li a { margin-right: -24px; }
+.sidebar nav li a { display: block; padding: 4px 0; color: #29323d; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; outline: none; }
+body.ltr .sidebar nav li a { margin-left: -24px; }
+body.rtl .sidebar nav li a { margin-right: -24px; }
 
-.content.has-sidebar .sidebar nav li a:hover { text-decoration: none; color: #0d78f2; }
+.sidebar nav li a:hover { text-decoration: none; color: #0d78f2; }
 
-.content.has-sidebar .sidebar nav li a.sel { color: #fff; background: #737f8c; cursor: default; }
-body.ltr .content.has-sidebar .sidebar nav li a.sel { border-radius: 0 2px 2px 0; }
-body.rtl .content.has-sidebar .sidebar nav li a.sel { border-radius: 2px 0 0 2px; }
+.sidebar nav li a.sel { color: #fff; background: #737f8c; cursor: default; }
+body.ltr .sidebar nav li a.sel { border-radius: 0 2px 2px 0; }
+body.rtl .sidebar nav li a.sel { border-radius: 2px 0 0 2px; }
 
-.content.has-sidebar .sidebar nav li .toggle { position: absolute; top: 3px; }
+.sidebar nav li .toggle { position: absolute; top: 3px; }
 
-.content.has-sidebar .sidebar nav li.expanded > .toggle { background-position: 50% -40px; }
+.sidebar nav li.expanded > .toggle { background-position: 50% -40px; }
 
-.content.has-sidebar .sidebar nav li a.sel + .toggle { background-position: 50% -20px; }
+.sidebar nav li a.sel + .toggle { background-position: 50% -20px; }
 
-.content.has-sidebar .sidebar nav li.expanded > a.sel + .toggle { background-position: 50% -60px; }
+.sidebar nav li.expanded > a.sel + .toggle { background-position: 50% -60px; }
 
-.content.has-sidebar .sidebar nav li ul { display: none; }
+.sidebar nav li ul { display: none; }
 
-.content.has-sidebar .sidebar nav li.expanded > ul { display: block; }
+.sidebar nav li.expanded > ul { display: block; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > a { padding-left: 24px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > a { padding-right: 24px; }
+body.ltr .sidebar nav > ul > li > a { padding-left: 24px; }
+body.rtl .sidebar nav > ul > li > a { padding-right: 24px; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > ul > li > a { padding-left: 44px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > ul > li > a { padding-right: 44px; }
+body.ltr .sidebar nav > ul > li > ul > li > a { padding-left: 44px; }
+body.rtl .sidebar nav > ul > li > ul > li > a { padding-right: 44px; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > a { padding-left: 64px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > a { padding-right: 64px; }
+body.ltr .sidebar nav > ul > li > ul > li > ul > li > a { padding-left: 64px; }
+body.rtl .sidebar nav > ul > li > ul > li > ul > li > a { padding-right: 64px; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > ul > li > a { padding-left: 84px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > ul > li > a { padding-right: 84px; }
+body.ltr .sidebar nav > ul > li > ul > li > ul > li > ul > li > a { padding-left: 84px; }
+body.rtl .sidebar nav > ul > li > ul > li > ul > li > ul > li > a { padding-right: 84px; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > ul > li > ul > li a { padding-left: 104px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > ul > li > ul > li a { padding-right: 104px; }
+body.ltr .sidebar nav > ul > li > ul > li > ul > li > ul > li > ul > li a { padding-left: 104px; }
+body.rtl .sidebar nav > ul > li > ul > li > ul > li > ul > li > ul > li a { padding-right: 104px; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > .toggle { left: -20px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > .toggle { right: -20px; }
+body.ltr .sidebar nav > ul > li > .toggle { left: -20px; }
+body.rtl .sidebar nav > ul > li > .toggle { right: -20px; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > ul > li > .toggle { left: 0px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > ul > li > .toggle { right: 0px; }
+body.ltr .sidebar nav > ul > li > ul > li > .toggle { left: 0px; }
+body.rtl .sidebar nav > ul > li > ul > li > .toggle { right: 0px; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > .toggle { left: 20px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > .toggle { right: 20px; }
+body.ltr .sidebar nav > ul > li > ul > li > ul > li > .toggle { left: 20px; }
+body.rtl .sidebar nav > ul > li > ul > li > ul > li > .toggle { right: 20px; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > ul > li > .toggle { left: 40px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > ul > li > .toggle { right: 40px; }
+body.ltr .sidebar nav > ul > li > ul > li > ul > li > ul > li > .toggle { left: 40px; }
+body.rtl .sidebar nav > ul > li > ul > li > ul > li > ul > li > .toggle { right: 40px; }
 
-body.ltr .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > ul > li > ul > li .toggle { left: 60px; }
-body.rtl .content.has-sidebar .sidebar nav > ul > li > ul > li > ul > li > ul > li > ul > li .toggle { right: 60px; }
+body.ltr .sidebar nav > ul > li > ul > li > ul > li > ul > li > ul > li .toggle { left: 60px; }
+body.rtl .sidebar nav > ul > li > ul > li > ul > li > ul > li > ul > li .toggle { right: 60px; }
 
 /* help */
 .content.has-help { padding-bottom: 60px; }
@@ -407,6 +407,9 @@ table.inputs td > .btngroup { float: none; }
 .buttons { position: relative; margin: 24px 0; min-height: 30px; }
 
 .buttons:before { content: '.'; display: block; height: 0; clear: both; visibility: hidden; margin-bottom: -5px; }
+
+body.ltr .buttons.right { margin-right: -5px; }
+body.rtl .buttons.right { margin-left: -5px; }
 
 body.ltr .buttons.rightalign { float: right; }
 body.rtl .buttons.rightalign { float: left; }
@@ -510,7 +513,7 @@ body.ltr .buttons .btn + .spinner { margin-left: 0; }
 body.rtl .buttons .btn + .spinner { margin-right: 0; }
 
 /* small buttons */
-.btngroup.small .btn, .btn.small { padding: 0 7px !important; font-size: 11px; line-height: 20px; }
+.btngroup.small .btn, .btn.small { padding: 0 7px !important; font-size: 11px; line-height: 22px; }
 
 .btngroup.small, .btngroup.small input.btn, .btn.small, .btn.small + .spinner { height: 22px; }
 
@@ -1031,6 +1034,8 @@ body.rtl .elementselectormodal .body .sidebar { padding-left: 0; }
 body.ltr .elementselectormodal .body .sidebar { border-right: 1px solid #e5e5e5; }
 body.rtl .elementselectormodal .body .sidebar { border-left: 1px solid #e5e5e5; }
 
+.elementselectormodal .body .sidebar nav li a.sel { border-radius: 0; }
+
 .elementselectormodal .body .main { margin: -24px; padding: 24px; height: calc(100% - 48px); overflow: auto; position: relative; }
 
 .elementselectormodal .body .main .elements .tableview { margin: 0 -24px; }
@@ -1223,6 +1228,9 @@ body.rtl .timewrapper:before { right: 7px; }
 .textline { border: none; border-bottom: 1px dashed #d5d8dd; padding-left: 0; padding-right: 0; color: #717f8e; background: none; }
 
 .textline:focus { outline: none; border-bottom-color: #aab2bb; }
+
+/* Kill IE's special text features */
+::-ms-reveal, ::-ms-clear { display: none; }
 
 /* Assets related */
 .hud.assetshud .body { max-height: 500px; overflow: auto; }

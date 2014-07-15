@@ -84,7 +84,7 @@ class NumberFormatter extends \CNumberFormatter
 		if ($stripZeroCents)
 		{
 			$decimal = $this->_locale->getNumberSymbol('decimal');
-			$result = preg_replace("/{$decimal}0*$/", '', $result);
+			$result = preg_replace('/\\'.$decimal.'0*$/', '', $result);
 		}
 
 		return $result;
