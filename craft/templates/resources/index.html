@@ -1,5 +1,5 @@
 {#
- # News index template
+ # Resources index template
  # -------------------
  #
  # This template is loaded whenever http://example.com/news is
@@ -11,12 +11,12 @@
  #}
 
 {% extends "_layout" %}
-{% set title = "News" %}
+{% set title = "Resources" %}
 
 {% block content %}
-	<h1>News</h1>
+	<h1>Resources</h1>
 
-	{% for entry in craft.entries.section('news').find() %}
+	{% for entry in craft.entries.section('Resources').find() %}
 		<article>
 			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
 			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
