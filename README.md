@@ -23,3 +23,6 @@ Craft is happier with a virtual host. I've aliased mine to ```craft.dev``` in my
       </Directory>
   </VirtualHost>
 ```
+
+## Front-end Dependencies 
+We're using ```Gulp``` to compile/concatenate/boring stuff on the front-end. (We're using Dan Tello's [Gulp Starter](https://github.com/greypants/gulp-starter).) In order to use it, you need [node](http://nodejs.org/). In order to install all the gulp things, run ```npm install```. To run gulp, run ```gulp watch```.
