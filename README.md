@@ -10,6 +10,7 @@ This is the repo for the public-facing DC chapter of Women Who Code. Edits to we
 ## Vhost
 Craft is happier with a virtual host. I've aliased mine to ```craft.dev``` in my ```httpd-vhosts.conf``` file: 
 
+```
   <VirtualHost *:80>
       ServerName womenwhocode.dev
       ServerAlias "womenwhocode.dev.192.168.7.72.xip.io"
@@ -21,3 +22,4 @@ Craft is happier with a virtual host. I've aliased mine to ```craft.dev``` in my
           Allow from all
       </Directory>
   </VirtualHost>
+```
