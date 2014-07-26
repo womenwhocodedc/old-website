@@ -14,8 +14,8 @@ Craft is happier with a virtual host. I've aliased mine to ```craft.dev``` in my
   <VirtualHost *:80>
       ServerName craft.dev
       ServerAlias "craft.dev.192.168.7.72.xip.io"
-      DocumentRoot '<path-to-craft>/site/public/'
-      <Directory "<path-to-craft>/site/public/">
+      DocumentRoot '<path-to-website-folder>/public/'
+      <Directory "<path-to-website-folder>/public/">
           Options Indexes FollowSymLinks
           AllowOverride All
           Order deny,allow
