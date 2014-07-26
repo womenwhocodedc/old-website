@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Tags fieldtype
+ * Class TagsFieldType
+ *
+ * @package craft.app.fieldtypes
  */
 class TagsFieldType extends BaseElementFieldType
 {

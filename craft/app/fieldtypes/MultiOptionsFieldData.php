@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Multi-select option field data class
+ * Multi-select option field data class.
+ *
+ * @package craft.app.fieldtypes
  */
 class MultiOptionsFieldData extends \ArrayObject
 {

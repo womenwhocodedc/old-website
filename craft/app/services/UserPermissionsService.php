@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Pro);
 
 /**
+ * Class UserPermissionsService
  *
+ * @package craft.app.services
  */
 class UserPermissionsService extends BaseApplicationComponent
 {

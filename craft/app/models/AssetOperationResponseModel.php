@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * This model represents an Asset Operation Response.
+ *
+ * @package craft.app.models
  */
 class AssetOperationResponseModel extends BaseModel
 {

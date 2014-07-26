@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class UpdatesWidget
  *
+ * @package craft.app.widgets
  */
 class UpdatesWidget extends BaseWidget
 {

@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Client);
 
 /**
- * Email functions
+ * Email functions.
+ *
+ * @package craft.app.validators
  */
 class EmailMessagesVariable
 {

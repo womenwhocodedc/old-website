@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class PluginsService
  *
+ * @package craft.app.services
  */
 class PluginsService extends BaseApplicationComponent
 {

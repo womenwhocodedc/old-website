@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class Exit_Node
  *
+ * @package craft.app.etc.templating.twigextensions
  */
 class Exit_Node extends \Twig_Node
 {

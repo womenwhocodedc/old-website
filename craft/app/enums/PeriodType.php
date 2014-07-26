@@ -12,7 +12,10 @@ namespace Craft;
  */
 
 /**
+ * Class PeriodType
  *
+ * @abstract
+ * @package craft.app.enums
  */
 abstract class PeriodType extends BaseEnum
 {

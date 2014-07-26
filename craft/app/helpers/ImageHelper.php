@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class ImageHelper
  *
+ * @package craft.app.helpers
  */
 class ImageHelper
 {

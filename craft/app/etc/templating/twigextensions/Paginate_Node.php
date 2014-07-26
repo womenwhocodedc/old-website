@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Represents a paginate node.
+ *
+ * @package craft.app.etc.templating.twigextensions
  */
 class Paginate_Node extends \Twig_Node
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Route functions
+ * Route functions.
+ *
+ * @package craft.app.validators
  */
 class RoutesVariable
 {

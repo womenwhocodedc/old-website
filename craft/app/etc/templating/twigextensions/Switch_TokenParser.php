@@ -11,10 +11,12 @@ namespace Craft;
  * @link      http://buildwithcraft.com
  */
 
-/*
- * Parses {% switch %} tags.
+/**
+ * Class Switch_TokenParser that parses {% switch %} tags.
  *
  * Based on the rejected Twig pull request: https://github.com/fabpot/Twig/pull/185
+ *
+ * @package craft.app.etc.templating.twigextensions
  */
 class Switch_TokenParser extends \Twig_TokenParser
 {
@@ -22,6 +24,8 @@ class Switch_TokenParser extends \Twig_TokenParser
 	 * Gets the tag name associated with this token parser.
 	 *
 	 * @param string The tag name
+	 *
+	 * @return string
 	 */
 	public function getTag()
 	{
@@ -32,6 +36,8 @@ class Switch_TokenParser extends \Twig_TokenParser
 	 * Parses a token and returns a node.
 	 *
 	 * @param \Twig_Token $token
+	 *
+	 * @throws \Twig_Error_Syntax
 	 * @return Switch_Node
 	 */
 	public function parse(\Twig_Token $token)
@@ -43,14 +49,9 @@ class Switch_TokenParser extends \Twig_TokenParser
 		$stream->expect(\Twig_Token::BLOCK_END_TYPE);
 
 		// There can be some whitespace between the {% switch %} and first {% case %} tag.
-		$token = $stream->getCurrent();
-
-		if ($token->getType() == \Twig_Token::TEXT_TYPE)
+		while ($stream->getCurrent()->getType() == \Twig_Token::TEXT_TYPE && trim($stream->getCurrent()->getValue()) == '')
 		{
-			if (trim($token->getValue()) === '')
-			{
-				$stream->next();
-			}
+			$stream->next();
 		}
 
 		$stream->expect(\Twig_Token::BLOCK_START_TYPE);

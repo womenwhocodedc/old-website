@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Username model
+ * Username model.
+ *
+ * @package craft.app.models
  */
 class UsernameModel extends BaseModel
 {

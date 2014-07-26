@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class AssetTransformRecord
  *
+ * @package craft.app.records
  */
 class AssetTransformRecord extends BaseRecord
 {

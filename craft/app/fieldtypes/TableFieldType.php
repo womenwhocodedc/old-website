@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class TableFieldType
  *
+ * @package craft.app.fieldtypes
  */
 class TableFieldType extends BaseFieldType
 {

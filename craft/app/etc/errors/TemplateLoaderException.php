@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class TemplateLoaderException
  *
+ * @package craft.app.etc.errors
  */
 class TemplateLoaderException extends \Twig_Error_Loader
 {

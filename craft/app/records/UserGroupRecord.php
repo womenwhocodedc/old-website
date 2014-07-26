@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Pro);
 
 /**
+ * Class UserGroupRecord
  *
+ * @package craft.app.records
  */
 class UserGroupRecord extends BaseRecord
 {

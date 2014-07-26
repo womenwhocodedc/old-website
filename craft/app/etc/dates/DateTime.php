@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class DateTime
  *
+ * @package craft.app.etc.dates
  */
 class DateTime extends \DateTime
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class HttpException
  *
+ * @package craft.app.etc.errors
  */
 class HttpException extends \CHttpException
 {

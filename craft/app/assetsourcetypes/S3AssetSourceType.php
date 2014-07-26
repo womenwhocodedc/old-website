@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Pro);
 
 /**
- * S3 source type class
+ * S3 source type class.
+ *
+ * @package craft.app.assetsourcetypes
  */
 class S3AssetSourceType extends BaseAssetSourceType
 {
@@ -608,7 +610,7 @@ class S3AssetSourceType extends BaseAssetSourceType
 	 */
 	protected function _renameSourceFolder(AssetFolderModel $folder, $newName)
 	{
-		$newFullPath = $this->_getPathPrefix().$this->_getParentFullPath($folder->path).$newName.'/';
+		$newFullPath = $this->_getPathPrefix().IOHelper::getParentFolderPath($folder->path).$newName.'/';
 
 		$this->_prepareForRequests();
 		$bucket = $this->getSettings()->bucket;

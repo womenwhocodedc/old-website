@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Settings functions
+ * Settings functions.
+ *
+ * @package craft.app.validators
  */
 class SystemSettingsVariable
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class AssetsHelper
  *
+ * @package craft.app.helpers
  */
 class AssetsHelper
 {

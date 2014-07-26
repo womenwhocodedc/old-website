@@ -12,7 +12,11 @@ namespace Craft;
  */
 
 /**
- * Base component base class
+ * Base component base class.
+ *
+ * @abstract
+ * @implements IComponentType
+ * @package craft.app.etc.components
  */
 abstract class BaseComponentType extends BaseApplicationComponent implements IComponentType
 {

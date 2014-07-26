@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Migration utility methods.
+ *
+ * @package craft.app.helpers
  */
 class MigrationHelper
 {

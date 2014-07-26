@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class UrlHelper
  *
+ * @package craft.app.helpers
  */
 class UrlHelper
 {

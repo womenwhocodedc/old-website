@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class Header_TokenParser
  *
+ * @package craft.app.etc.templating.twigextensions
  */
 class Header_TokenParser extends \Twig_TokenParser
 {

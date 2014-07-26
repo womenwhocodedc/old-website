@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class TemplateHelper
  *
+ * @package craft.app.helpers
  */
 class TemplateHelper
 {

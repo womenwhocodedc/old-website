@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class AssetTransformsService
  *
+ * @package craft.app.services
  */
 class AssetTransformsService extends BaseApplicationComponent
 {

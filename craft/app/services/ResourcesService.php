@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class ResourcesService
  *
+ * @package craft.app.services
  */
 class ResourcesService extends BaseApplicationComponent
 {

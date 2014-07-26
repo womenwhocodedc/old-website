@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Plugin functions
+ * Plugin functions.
+ *
+ * @package craft.app.validators
  */
 class PluginsVariable
 {

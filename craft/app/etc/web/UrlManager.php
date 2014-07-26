@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class UrlManager
  *
+ * @package craft.app.etc.web
  */
 class UrlManager extends \CUrlManager
 {

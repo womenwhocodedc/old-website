@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class RouteRecord
  *
+ * @package craft.app.records
  */
 class RouteRecord extends BaseRecord
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class LogRouter
  *
+ * @package craft.app.etc.logging
  */
 class LogRouter extends \CLogRouter
 {

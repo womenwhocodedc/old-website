@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Pro);
 
 /**
+ * Class UserGroupsService
  *
+ * @package craft.app.services
  */
 class UserGroupsService extends BaseApplicationComponent
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class TemplatesController
  *
+ * @package craft.app.controllers
  */
 class TemplatesController extends BaseController
 {

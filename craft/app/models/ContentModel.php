@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Entry content model class
+ * Entry content model class.
+ *
+ * @package craft.app.models
  */
 class ContentModel extends BaseModel
 {

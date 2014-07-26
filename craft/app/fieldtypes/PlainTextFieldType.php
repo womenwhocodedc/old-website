@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class PlainTextFieldType
  *
+ * @package craft.app.fieldtypes
  */
 class PlainTextFieldType extends BaseFieldType
 {

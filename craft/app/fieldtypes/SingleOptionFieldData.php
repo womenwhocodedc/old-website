@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Single-select option field data class
+ * Single-select option field data class.
+ *
+ * @package craft.app.fieldtypes
  */
 class SingleOptionFieldData extends OptionData
 {

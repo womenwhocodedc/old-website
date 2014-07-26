@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class EmailService
  *
+ * @package craft.app.services
  */
 class EmailService extends BaseApplicationComponent
 {

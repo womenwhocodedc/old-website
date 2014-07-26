@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Handles field tasks
+ * Handles field tasks.
+ *
+ * @package craft.app.controllers
  */
 class FieldsController extends BaseController
 {

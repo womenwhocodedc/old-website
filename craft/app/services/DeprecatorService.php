@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class DeprecatorService
  *
+ * @package craft.app.services
  */
 class DeprecatorService extends BaseApplicationComponent
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class DashboardService
  *
+ * @package craft.app.services
  */
 class DashboardService extends BaseApplicationComponent
 {

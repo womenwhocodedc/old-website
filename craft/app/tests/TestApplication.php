@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class TestApplication
  *
+ * @package craft.app.tests
  */
 class TestApplication extends WebApp
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class MigrationsService
  *
+ * @package craft.app.services
  */
 class MigrationsService extends BaseApplicationComponent
 {

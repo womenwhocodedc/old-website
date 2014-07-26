@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Entry element type
+ * Entry element type.
+ *
+ * @package craft.app.elementtypes
  */
 class EntryElementType extends BaseElementType
 {

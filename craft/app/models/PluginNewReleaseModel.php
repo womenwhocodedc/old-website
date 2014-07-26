@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Stores the info for a plugin release.
+ *
+ * @package craft.app.models
  */
 class PluginNewReleaseModel extends BaseModel
 {

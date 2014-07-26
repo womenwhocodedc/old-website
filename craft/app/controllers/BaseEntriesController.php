@@ -12,9 +12,10 @@ namespace Craft;
  */
 
 /**
- * Handles entry tasks
+ * Handles entry tasks.
  *
  * @abstract
+ * @package craft.app.controllers
  */
 abstract class BaseEntriesController extends BaseController
 {

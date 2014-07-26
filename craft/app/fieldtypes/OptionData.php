@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Option data class
+ * Class OptionData
+ *
+ * @package craft.app.fieldtypes
  */
 class OptionData
 {
@@ -25,11 +27,12 @@ class OptionData
 	 *
 	 * @param string $label
 	 * @param string $value
+	 * @param        $selected
 	 */
 	function __construct($label, $value, $selected)
 	{
-		$this->label = $label;
-		$this->value = $value;
+		$this->label    = $label;
+		$this->value    = $value;
 		$this->selected = $selected;
 	}
 

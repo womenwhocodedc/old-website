@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Clear Caches tool
+ * Clear Caches tool.
+ *
+ * @package craft.app.tools
  */
 class ClearCachesTool extends BaseTool
 {

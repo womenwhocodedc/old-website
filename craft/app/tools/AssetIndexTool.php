@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Asset Index tool
+ * Asset Index tool.
+ *
+ * @package craft.app.tools
  */
 class AssetIndexTool extends BaseTool
 {

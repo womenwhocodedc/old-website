@@ -11,6 +11,11 @@ namespace Craft;
  * @link      http://buildwithcraft.com
  */
 
+/**
+ * Class Image
+ *
+ * @package craft.app.etc.io
+ */
 class Image
 {
 	private $_imageSourcePath;

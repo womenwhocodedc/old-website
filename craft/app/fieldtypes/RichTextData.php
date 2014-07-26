@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Stores the data for Rich Text fields.
+ *
+ * @package craft.app.fieldtypes
  */
 class RichTextData extends \Twig_Markup
 {

@@ -12,6 +12,11 @@
 
 namespace Craft;
 
+/**
+ * Class HeaderHelper
+ *
+ * @package craft.app.helpers
+ */
 class HeaderHelper
 {
 	/**

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class LocalizationHelper
  *
+ * @package craft.app.helpers
  */
 class LocalizationHelper
 {

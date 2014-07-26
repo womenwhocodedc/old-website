@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Config service
+ * Class ConfigService
+ *
+ * @package craft.app.services
  */
 class ConfigService extends BaseApplicationComponent
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class GlobalsService
  *
+ * @package craft.app.services
  */
 class GlobalsService extends BaseApplicationComponent
 {

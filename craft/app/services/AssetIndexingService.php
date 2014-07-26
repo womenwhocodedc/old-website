@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class AssetIndexingService
  *
+ * @package craft.app.services
  */
 class AssetIndexingService extends BaseApplicationComponent
 {

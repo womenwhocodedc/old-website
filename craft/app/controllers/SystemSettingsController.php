@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Handles settings from the control panel.
+ *
+ * @package craft.app.controllers
  */
 class SystemSettingsController extends BaseController
 {

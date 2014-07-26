@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Content functions
+ * Class FieldsVariable
+ *
+ * @package craft.app.validators
  */
 class FieldsVariable
 {

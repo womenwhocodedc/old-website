@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class WidgetRecord
  *
+ * @package craft.app.records
  */
 class WidgetRecord extends BaseRecord
 {

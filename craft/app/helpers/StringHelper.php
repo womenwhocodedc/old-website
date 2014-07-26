@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class StringHelper
  *
+ * @package craft.app.helpers
  */
 class StringHelper
 {

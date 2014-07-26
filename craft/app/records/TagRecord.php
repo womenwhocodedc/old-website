@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class TagRecord
  *
+ * @package craft.app.records
  */
 class TagRecord extends BaseRecord
 {

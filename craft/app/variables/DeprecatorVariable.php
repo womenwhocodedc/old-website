@@ -11,6 +11,11 @@ namespace Craft;
  * @link      http://buildwithcraft.com
  */
 
+/**
+ * Class DeprecatorVariable
+ *
+ * @package craft.app.validators
+ */
 class DeprecatorVariable
 {
 	/**

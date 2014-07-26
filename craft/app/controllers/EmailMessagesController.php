@@ -15,6 +15,8 @@ craft()->requireEdition(Craft::Client);
 
 /**
  * Handles email message tasks.
+ *
+ * @package craft.app.controllers
  */
 class EmailMessagesController extends BaseController
 {

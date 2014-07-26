@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class UserSessionService
  *
+ * @package craft.app.services
  */
 class UserSessionService extends \CWebUser
 {
@@ -254,6 +256,11 @@ class UserSessionService extends \CWebUser
 	{
 		if ($this->isGuest())
 		{
+			if (craft()->config->get('loginPath') === craft()->request->getPath())
+			{
+				throw new Exception(Craft::t('requireLogin was used on the login page, creating an infinite loop.'));
+			}
+
 			if (!craft()->request->isAjaxRequest())
 			{
 				$url = craft()->request->getPath();

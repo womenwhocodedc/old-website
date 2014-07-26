@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Client);
 
 /**
+ * Class EntryRevisionsVariable
  *
+ * @package craft.app.validators
  */
 class EntryRevisionsVariable
 {

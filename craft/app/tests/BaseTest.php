@@ -14,7 +14,10 @@ namespace Craft;
 use \Mockery as m;
 
 /**
- * Base test class
+ * Base test class.
+ *
+ * @abstract
+ * @package craft.app.tests
  */
 abstract class BaseTest extends \CTestCase
 {

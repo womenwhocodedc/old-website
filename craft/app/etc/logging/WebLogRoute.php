@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class WebLogRoute
  *
+ * @package craft.app.etc.logging
  */
 class WebLogRoute extends \CWebLogRoute
 {

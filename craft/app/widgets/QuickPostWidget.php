@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class QuickPostWidget
  *
+ * @package craft.app.widgets
  */
 class QuickPostWidget extends BaseWidget
 {

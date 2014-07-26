@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class DbHelper
  *
+ * @package craft.app.helpers
  */
 class DbHelper
 {

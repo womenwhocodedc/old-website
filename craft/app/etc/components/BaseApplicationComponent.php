@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class BaseApplicationComponent
  *
+ * @package craft.app.etc.components
  */
 class BaseApplicationComponent extends \CApplicationComponent
 {

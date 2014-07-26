@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class MatrixService
  *
+ * @package craft.app.services
  */
 class MatrixService extends BaseApplicationComponent
 {

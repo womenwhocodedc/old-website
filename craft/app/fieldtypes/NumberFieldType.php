@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class NumberFieldType
  *
+ * @package craft.app.fieldtypes
  */
 class NumberFieldType extends BaseFieldType
 {

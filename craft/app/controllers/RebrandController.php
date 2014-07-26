@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Client);
 
 /**
- * Handles rebranding tasks
+ * Handles rebranding tasks.
+ *
+ * @package craft.app.controllers
  */
 class RebrandController extends BaseController
 {

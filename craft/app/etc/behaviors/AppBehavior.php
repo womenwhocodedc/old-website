@@ -14,7 +14,7 @@ namespace Craft;
 /**
  * Class AppBehavior
  *
- * @package Craft
+ * @package craft.app.etc.behaviors
  */
 class AppBehavior extends BaseBehavior
 {

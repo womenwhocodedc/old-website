@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Number formatter class
+ * Number formatter class.
+ *
+ * @package craft.app.etc.i18n
  */
 class NumberFormatter extends \CNumberFormatter
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Asset element type
+ * Asset element type.
+ *
+ * @package craft.app.elementtypes
  */
 class AssetElementType extends BaseElementType
 {

@@ -12,7 +12,10 @@ namespace Craft;
  */
 
 /**
+ * Class PclZip
  *
+ * @implements IZip
+ * @package craft.app.etc.io
  */
 class PclZip implements IZip
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Entries fieldtype
+ * Class EntriesFieldType
+ *
+ * @package craft.app.fieldtypes
  */
 class EntriesFieldType extends BaseElementFieldType
 {

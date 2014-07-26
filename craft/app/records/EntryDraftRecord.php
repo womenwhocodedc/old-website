@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Client);
 
 /**
- * Stores entry drafts
+ * Stores entry drafts.
+ *
+ * @package craft.app.records
  */
 class EntryDraftRecord extends BaseRecord
 {

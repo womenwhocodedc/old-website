@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class Redirect_TokenParser
  *
+ * @package craft.app.etc.templating.twigextensions
  */
 class Redirect_TokenParser extends \Twig_TokenParser
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class EtModel
  *
+ * @package craft.app.models
  */
 class EtModel extends BaseModel
 {

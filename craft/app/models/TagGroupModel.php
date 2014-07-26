@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Tag group model
+ * Tag group model.
+ *
+ * @package craft.app.models
  */
 class TagGroupModel extends BaseModel
 {

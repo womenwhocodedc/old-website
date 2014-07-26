@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Client);
 
 /**
+ * Class EntryDraftModel
  *
+ * @package craft.app.models
  */
 class EntryDraftModel extends BaseEntryRevisionModel
 {

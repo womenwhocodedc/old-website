@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Category element type
+ * Category element type.
+ *
+ * @package craft.app.elementtypes
  */
 class CategoryElementType extends BaseElementType
 {

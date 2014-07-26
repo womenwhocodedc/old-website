@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class MatrixFieldType
  *
+ * @package craft.app.fieldtypes
  */
 class MatrixFieldType extends BaseFieldType
 {

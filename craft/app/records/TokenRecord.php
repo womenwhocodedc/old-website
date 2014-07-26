@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Token record
+ * Token record.
+ *
+ * @package craft.app.records
  */
 class TokenRecord extends BaseRecord
 {

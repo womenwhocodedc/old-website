@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Client);
 
 /**
+ * Class EntryRevisionsController
  *
+ * @package craft.app.controllers
  */
 class EntryRevisionsController extends BaseEntriesController
 {
@@ -315,6 +317,7 @@ class EntryRevisionsController extends BaseEntriesController
 	 */
 	private function _setDraftAttributesFromPost(EntryDraftModel $draft)
 	{
+		$draft->typeId     = craft()->request->getPost('typeId');
 		$draft->slug       = craft()->request->getPost('slug');
 		$draft->postDate   = craft()->request->getPost('postDate');
 		$draft->expiryDate = craft()->request->getPost('expiryDate');

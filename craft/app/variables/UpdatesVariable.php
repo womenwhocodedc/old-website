@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Update functions
+ * Update functions.
+ *
+ * @package craft.app.validators
  */
 class UpdatesVariable
 {

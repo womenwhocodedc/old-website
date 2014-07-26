@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class LocaleData
  *
+ * @package craft.app.etc.i18n
  */
 class LocaleData extends \CLocale
 {

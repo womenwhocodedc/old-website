@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class DbConnection
  *
+ * @package craft.app.etc.db
  */
 class DbConnection extends \CDbConnection
 {

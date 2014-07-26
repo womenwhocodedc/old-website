@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Extends CDbCommand
+ * Class DbCommand
+ *
+ * @package craft.app.etc.db
  */
 class DbCommand extends \CDbCommand
 {

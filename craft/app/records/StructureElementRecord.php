@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class StructureElementRecord
  *
+ * @package craft.app.records
  */
 class StructureElementRecord extends BaseRecord
 {

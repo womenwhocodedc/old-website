@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class TagsService
  *
+ * @package craft.app.services
  */
 class TagsService extends BaseApplicationComponent
 {

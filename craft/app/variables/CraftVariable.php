@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Contains all global variables.
+ *
+ * @package craft.app.validators
  */
 class CraftVariable
 {

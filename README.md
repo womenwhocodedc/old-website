@@ -12,8 +12,8 @@ Craft is happier with a virtual host. I've aliased mine to ```craft.dev``` in my
 
 ``` bash
   <VirtualHost *:80>
-      ServerName womenwhocode.dev
-      ServerAlias "womenwhocode.dev.192.168.7.72.xip.io"
+      ServerName craft.dev
+      ServerAlias "craft.dev.192.168.7.72.xip.io"
       DocumentRoot '<path-to-craft>/site/public/'
       <Directory "<path-to-craft>/site/public/">
           Options Indexes FollowSymLinks

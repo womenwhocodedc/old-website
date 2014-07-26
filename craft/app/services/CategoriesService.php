@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class CategoriesService
  *
+ * @package craft.app.services
  */
 class CategoriesService extends BaseApplicationComponent
 {

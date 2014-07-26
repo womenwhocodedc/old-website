@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Category model class
+ * Category model class.
+ *
+ * @package craft.app.models
  */
 class CategoryModel extends BaseElementModel
 {

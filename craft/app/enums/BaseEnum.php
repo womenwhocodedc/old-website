@@ -15,7 +15,8 @@ namespace Craft;
 /**
  * Class BaseEnum
  *
- * @package Craft
+ * @abstract
+ * @package craft.app.enums
  */
 abstract class BaseEnum
 {

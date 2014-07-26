@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Config functions
+ * Class ConfigVariable
+ *
+ * @package craft.app.validators
  */
 class ConfigVariable
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Handles entry tasks
+ * Handles entry tasks.
+ *
+ * @package craft.app.controllers
  */
 class EntriesController extends BaseEntriesController
 {
@@ -216,7 +218,8 @@ class EntriesController extends BaseEntriesController
 		}
 		else
 		{
-			$variables['title'] = Craft::t($variables['entry']->title);
+			$variables['docTitle'] = Craft::t($variables['entry']->title);
+			$variables['title'] = HtmlHelper::encode(Craft::t($variables['entry']->title));
 
 			if (craft()->getEdition() >= Craft::Client && $variables['entry']->getClassHandle() != 'Entry')
 			{

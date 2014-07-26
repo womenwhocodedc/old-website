@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Tool template variable
+ * Tool template variable.
+ *
+ * @package craft.app.validators
  */
 class ToolVariable extends BaseComponentTypeVariable
 {

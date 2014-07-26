@@ -14,7 +14,7 @@ namespace Craft;
 /**
  * Class LogEntryModel
  *
- * @package Craft
+ * @package craft.app.models
  */
 class LogEntryModel extends BaseModel
 {

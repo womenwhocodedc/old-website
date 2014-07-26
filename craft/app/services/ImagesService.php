@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Service for image operations
+ * Service for image operations.
+ *
+ * @package craft.app.services
  */
 class ImagesService extends BaseApplicationComponent
 {

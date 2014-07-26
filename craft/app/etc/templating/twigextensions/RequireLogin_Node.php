@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class RequireLogin_Node
  *
+ * @package craft.app.etc.templating.twigextensions
  */
 class RequireLogin_Node extends \Twig_Node
 {

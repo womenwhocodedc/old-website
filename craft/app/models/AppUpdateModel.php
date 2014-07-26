@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Stores the available Craft update info.
+ *
+ * @package craft.app.models
  */
 class AppUpdateModel extends BaseModel
 {

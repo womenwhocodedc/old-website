@@ -3898,7 +3898,7 @@ Craft.AssetIndex = Craft.BaseElementIndex.extend(
 	_attachElementEvents: function($elements)
 	{
 		// Doubleclick opens the HUD for editing
-		this.removeListener($elements, 'dlbclick');
+		this.removeListener($elements, 'dblclick');
 		this.addListener($elements, 'dblclick', $.proxy(this, '_editProperties'));
 
 		// Context menus
@@ -4495,7 +4495,7 @@ Craft.AssetSelectInput = Craft.BaseElementSelectInput.extend(
 			dropZone: this.$container,
 			formData: {
 				fieldId: this.fieldId,
-				entryId: $('input[name=entryId]').val()
+				elementId: this.sourceElementId
 			}
 		};
 
@@ -6576,6 +6576,10 @@ Craft.FieldToggle = Garnish.Base.extend(
 		{
 			return 'link';
 		}
+		else if (this.$toggle.prop('nodeName') == 'DIV' && this.$toggle.hasClass('lightswitch'))
+		{
+			return 'lightswitch';
+		}
 	},
 
 	findTargets: function()
@@ -6600,7 +6604,14 @@ Craft.FieldToggle = Garnish.Base.extend(
 
 	getToggleVal: function()
 	{
-		return Garnish.getInputPostVal(this.$toggle);
+		if (this.type == 'lightswitch')
+		{
+			return this.$toggle.children('input').val();
+		}
+		else
+		{
+			return Garnish.getInputPostVal(this.$toggle);
+		}
 	},
 
 	onToggleChange: function()
@@ -7650,7 +7661,6 @@ Craft.LightSwitch = Garnish.Base.extend(
 	$outerContainer: null,
 	$innerContainer: null,
 	$input: null,
-	$toggleTarget: null,
 	small: false,
 	on: null,
 	dragger: null,
@@ -7683,8 +7693,6 @@ Craft.LightSwitch = Garnish.Base.extend(
 			return;
 		}
 
-		this.$toggleTarget = $(this.$outerContainer.attr('data-toggle'));
-
 		this.on = this.$outerContainer.hasClass('on');
 
 		this.addListener(this.$outerContainer, 'mousedown', '_onMouseDown');
@@ -7711,14 +7719,6 @@ Craft.LightSwitch = Garnish.Base.extend(
 		this.$outerContainer.addClass('on');
 		this.on = true;
 		this.onChange();
-
-		this.$toggleTarget.show();
-		this.$toggleTarget.height('auto');
-		var height = this.$toggleTarget.height();
-		this.$toggleTarget.height(0);
-		this.$toggleTarget.stop().animate({height: height}, Craft.LightSwitch.animationDuration, $.proxy(function() {
-			this.$toggleTarget.height('auto');
-		}, this));
 	},
 
 	turnOff: function()
@@ -7733,8 +7733,6 @@ Craft.LightSwitch = Garnish.Base.extend(
 		this.$outerContainer.removeClass('on');
 		this.on = false;
 		this.onChange();
-
-		this.$toggleTarget.stop().animate({height: 0}, Craft.LightSwitch.animationDuration);
 	},
 
 	toggle: function(event)
@@ -7767,7 +7765,9 @@ Craft.LightSwitch = Garnish.Base.extend(
 
 		// Was this a click?
 		if (!this.dragger.dragging)
+		{
 			this.toggle();
+		}
 	},
 
 	_onKeyDown: function(event)
@@ -9231,9 +9231,12 @@ Craft.StructureDrag = Garnish.Drag.extend(
 				}
 
 				// Make it real
+				var $element = this.$draggee.children('.row').children('.element');
+
 				var data = {
 					structureId: this.structure.id,
-					elementId:   this.$draggee.children('.row').children('.element').data('id'),
+					elementId:   $element.data('id'),
+					locale:      $element.data('locale'),
 					prevId:      this.$draggee.prev().children('.row').children('.element').data('id'),
 					parentId:    this.$draggee.parent('ul').parent('li').children('.row').children('.element').data('id')
 				};

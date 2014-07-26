@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class AssetIndexDataRecord
  *
+ * @package craft.app.records
  */
 class AssetIndexDataRecord extends BaseRecord
 {

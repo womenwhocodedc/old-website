@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Recursively outputs a hierarchical navigation.
+ *
+ * @package craft.app.etc.templating.twigextensions
  */
 class Nav_TokenParser extends \Twig_TokenParser
 {

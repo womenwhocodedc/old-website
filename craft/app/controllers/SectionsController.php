@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Handles section management tasks
+ * Handles section management tasks.
+ *
+ * @package craft.app.controllers
  */
 class SectionsController extends BaseController
 {

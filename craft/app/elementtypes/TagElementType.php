@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Tag element type
+ * Tag element type.
+ *
+ * @package craft.app.elementtypes
  */
 class TagElementType extends BaseElementType
 {

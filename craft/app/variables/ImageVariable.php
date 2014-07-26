@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class ImageVariable
  *
+ * @package craft.app.validators
  */
 class ImageVariable
 {

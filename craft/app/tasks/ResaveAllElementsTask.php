@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Resave All Elements Task
+ * Resave All Elements Task.
+ *
+ * @package craft.app.tasks
  */
 class ResaveAllElementsTask extends BaseTask
 {

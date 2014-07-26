@@ -12,9 +12,10 @@ namespace Craft;
  */
 
 /**
- * Active Record base class
+ * Active Record base class.
  *
  * @abstract
+ * @package craft.app.records
  */
 abstract class BaseRecord extends \CActiveRecord
 {

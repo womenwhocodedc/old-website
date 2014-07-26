@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Stores locale info.
+ *
+ * @package craft.app.models
  */
 class LocaleModel extends BaseApplicationComponent
 {

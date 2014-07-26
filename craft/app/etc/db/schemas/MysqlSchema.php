@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class MysqlSchema
  *
+ * @package craft.app.etc.db.schemas
  */
 class MysqlSchema extends \CMysqlSchema
 {

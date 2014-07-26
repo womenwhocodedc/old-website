@@ -14,7 +14,9 @@ namespace Craft;
 craft()->requireEdition(Craft::Client);
 
 /**
- * Rebranding functions
+ * Rebranding functions.
+ *
+ * @package craft.app.validators
  */
 class RebrandVariable
 {

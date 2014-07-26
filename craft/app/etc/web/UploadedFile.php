@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Represents info for an uploaded file.
+ *
+ * @package craft.app.etc.web
  */
 class UploadedFile extends \CUploadedFile
 {

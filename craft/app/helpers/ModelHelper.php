@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class ModelHelper
  *
+ * @package craft.app.helpers
  */
 class ModelHelper
 {

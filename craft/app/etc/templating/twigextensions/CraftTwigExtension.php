@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class CraftTwigExtension
  *
+ * @package craft.app.etc.templating.twigextensions
  */
 class CraftTwigExtension extends \Twig_Extension
 {

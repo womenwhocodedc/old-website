@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Handles asset transform tasks
+ * Handles asset transform tasks.
+ *
+ * @package craft.app.controllers
  */
 class AssetTransformsController extends BaseController
 {

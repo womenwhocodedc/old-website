@@ -13,6 +13,8 @@ namespace Craft;
 
 /**
  * Find and Replace tool
+ *
+ * @package craft.app.tools
  */
 class FindAndReplaceTool extends BaseTool
 {

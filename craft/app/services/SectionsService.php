@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class SectionsService
  *
+ * @package craft.app.services
  */
 class SectionsService extends BaseApplicationComponent
 {
@@ -622,6 +624,7 @@ class SectionsService extends BaseApplicationComponent
 						{
 							// Add all of the entries to the structure
 							$criteria = craft()->elements->getCriteria(ElementType::Entry);
+							$criteria->locale = array_shift(array_keys($oldSectionLocales));
 							$criteria->sectionId = $section->id;
 							$criteria->status = null;
 							$criteria->localeEnabled = null;

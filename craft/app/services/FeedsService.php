@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class FeedsService
  *
+ * @package craft.app.services
  */
 class FeedsService extends BaseApplicationComponent
 {

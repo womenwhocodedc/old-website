@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class ElementHelper
  *
+ * @package craft.app.helpers
  */
 class ElementHelper
 {

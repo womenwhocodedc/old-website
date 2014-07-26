@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Handles asset source tasks
+ * Handles asset source tasks.
+ *
+ * @package craft.app.controllers
  */
 class AssetSourcesController extends BaseController
 {

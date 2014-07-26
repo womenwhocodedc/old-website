@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class TaskModel
  *
+ * @package craft.app.models
  */
 class TaskModel extends BaseComponentModel
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class IncludeResource_Node
  *
+ * @package craft.app.etc.templating.twigextensions
  */
 class IncludeResource_Node extends \Twig_Node
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Fieldtype interface
+ * Interface IFieldType
+ *
+ * @package craft.app.fieldtypes
  */
 interface IFieldType extends ISavableComponentType
 {

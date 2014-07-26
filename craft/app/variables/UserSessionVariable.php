@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * User session functions
+ * User session functions.
+ *
+ * @package craft.app.validators
  */
 class UserSessionVariable
 {

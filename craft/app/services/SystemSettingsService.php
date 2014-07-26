@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class SystemSettingsService
  *
+ * @package craft.app.services
  */
 class SystemSettingsService extends BaseApplicationComponent
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class AssetFolderModel
  *
+ * @package craft.app.models
  */
 class AssetFolderModel extends BaseModel
 {

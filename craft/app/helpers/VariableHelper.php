@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Helper class for template variables
+ * Helper class for template variables.
+ *
+ * @package craft.app.helpers
  */
 class VariableHelper
 {

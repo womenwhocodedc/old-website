@@ -12,7 +12,10 @@ namespace Craft;
  */
 
 /**
- * Section types
+ * Class SectionType
+ *
+ * @abstract
+ * @package craft.app.enums
  */
 abstract class SectionType extends BaseEnum
 {

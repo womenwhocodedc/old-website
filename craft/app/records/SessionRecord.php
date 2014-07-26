@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class SessionRecord
  *
+ * @package craft.app.records
  */
 class SessionRecord extends BaseRecord
 {

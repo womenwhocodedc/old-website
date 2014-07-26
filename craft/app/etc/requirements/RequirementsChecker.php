@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class RequirementsChecker
  *
+ * @package craft.app.etc.requirements
  */
 class RequirementsChecker extends \CComponent
 {

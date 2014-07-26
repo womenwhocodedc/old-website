@@ -11,7 +11,11 @@ namespace Craft;
  * @link      http://buildwithcraft.com
  */
 
-
+/**
+ * Class Logger
+ *
+ * @package craft.app.etc.logging
+ */
 class Logger extends \CLogger
 {
 	/**

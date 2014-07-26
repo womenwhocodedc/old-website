@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Field type template variable
+ * Field type template variable.
+ *
+ * @package craft.app.validators
  */
 class FieldTypeVariable extends BaseComponentTypeVariable
 {

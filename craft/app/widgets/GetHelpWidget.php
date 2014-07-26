@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Get Help widget
+ * Get Help widget.
+ *
+ * @package craft.app.widgets
  */
 class GetHelpWidget extends BaseWidget
 {

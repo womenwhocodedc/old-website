@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class LoggingHelper
  *
+ * @package craft.app.helpers
  */
 class LoggingHelper
 {

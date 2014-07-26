@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class PathService
  *
+ * @package craft.app.services
  */
 class PathService extends BaseApplicationComponent
 {

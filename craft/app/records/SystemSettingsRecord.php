@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class SystemSettingsRecord
  *
+ * @package craft.app.records
  */
 class SystemSettingsRecord extends BaseRecord
 {

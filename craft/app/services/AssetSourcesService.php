@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class AssetSourcesService
  *
+ * @package craft.app.services
  */
 class AssetSourcesService extends BaseApplicationComponent
 {

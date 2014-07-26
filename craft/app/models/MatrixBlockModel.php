@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Matrix block model class
+ * Matrix block model class.
+ *
+ * @package craft.app.models
  */
 class MatrixBlockModel extends BaseElementModel
 {

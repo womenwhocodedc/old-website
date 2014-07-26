@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class EtService
  *
+ * @package craft.app.services
  */
 class EtService extends BaseApplicationComponent
 {

@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Matrix block element type
+ * Matrix block element type.
+ *
+ * @package craft.app.elementtypes
  */
 class MatrixBlockElementType extends BaseElementType
 {

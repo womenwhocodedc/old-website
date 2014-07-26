@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
+ * Class AssetTransformIndexModel
  *
+ * @package craft.app.models
  */
 class AssetTransformIndexModel extends BaseModel
 {

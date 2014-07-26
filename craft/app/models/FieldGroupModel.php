@@ -12,7 +12,9 @@ namespace Craft;
  */
 
 /**
- * Field group model class
+ * Field group model class.
+ *
+ * @package craft.app.models
  */
 class FieldGroupModel extends BaseModel
 {
